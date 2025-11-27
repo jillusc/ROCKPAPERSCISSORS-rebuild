@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="jillusc" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/images/RPS-favicon.png" />
+    <title>ROCKPAPERSCISSORS!</title>
+  </head>
+  <body>
+    <header>
+      <img src="assets/images/logo.webp" class="RPS-logo" alt="logo" />
+      <h1>ROCKPAPERSCISSORS!</h1>
+    </header>
+    <main>
+      <div id="main-outer-div">
+        <div id="player-buttons">
+          <p class="select-label">Select</p>
+          <div class="buttons-row">
+            <button class="btn-choices" aria-label="rock">
+              <img
+                src="assets/images/btn-rock.jpg"
+                data-type="rock"
+                alt="rock"
+              />
+            </button>
+            <button class="btn-choices" aria-label="paper">
+              <img
+                src="assets/images/btn-paper.jpg"
+                data-type="paper"
+                alt="paper"
+              />
+            </button>
+            <button class="btn-choices" aria-label="scissors">
+              <img
+                src="assets/images/btn-scissors.jpg"
+                data-type="scissors"
+                alt="scissors"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div id="game-area">
+          <div id="play-area">
+            <div class="go">
+              <p>Player</p>
+              <div class="choice-img-container">
+                <img
+                  id="player-choice-img"
+                  src="assets/images/blank.webp"
+                  alt="(no selection)"
+                />
+              </div>
+            </div>
+
+            <hr class="divider" />
+
+            <div class="go">
+              <p>Computer</p>
+              <div class="choice-img-container">
+                <img
+                  id="computer-choice-img"
+                  src="assets/images/blank.webp"
+                  alt="(not generated)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="score-area">
+          <p>WINS: &nbsp;<span id="scores">0</span></p>
+          <p>WINS: &nbsp;<span id="losses">0</span></p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>copyright <span>&copy;</span> jillusc 2023</p>
+    </footer>
+    <div id="modal-overlay">
+      <div id="modal-box">
+        <p id="modal-message"></p>
+        <button id="modal-restart">Play Again</button>
+      </div>
+    </div>
+    <script src="dist/script.js"></script>
+  </body>
+</html>

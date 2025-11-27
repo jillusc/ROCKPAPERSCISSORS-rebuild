@@ -1,0 +1,349 @@
+@import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
+
+/* RESET — remove browser defaults so layout is predictable */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+/* Allow the page to fill the full viewport height (needed for footer-at-bottom) */
+html,
+body {
+  height: 100%;
+}
+
+/* PAGE LAYOUT */
+/* Make the whole page a vertical flex layout so main can expand and footer sits at the bottom */
+body {
+  display: flex;
+  flex-direction: column;
+  background: #ccc;
+  font-family: "Sigmar", sans-serif;
+  color: #410387;
+  text-align: center;
+}
+
+/* Let main grow to fill leftover space above the footer */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+
+.RPS-logo {
+  width: 52px;
+}
+
+h1 {
+  font-size: 1.15rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* MAIN LAYOUT */
+#main-outer-div {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px auto;
+}
+
+.select-label {
+  flex-basis: 100%; /* force onto its own line */
+  color: #fff;
+}
+
+/* PLAYER BUTTONS */
+.buttons-row {
+  display: flex;
+  gap: 10px;
+}
+
+#player-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-choices {
+  width: 60px;
+  height: 60px;
+  background: none;
+  cursor: pointer;
+}
+
+.btn-choices img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* GAME AREA */
+#game-area {
+  flex: 1;
+  background: #7bf9d7;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* make player/divider/computer sit next to each other horizontally */
+#play-area {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.go {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.go p {
+  font-size: 1.25rem;
+}
+
+/* CHOICE IMAGES */
+.choice-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choice-img-container img {
+  width: 100%;
+}
+
+/* VERTICAL DIVIDER */
+.divider {
+  width: 2px;
+  background: #fff;
+}
+
+/* SCORE AREA */
+#score-area {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  background: #410387;
+  font-size: 1rem;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+/* FOOTER */
+footer {
+  background: #410387;
+  padding: 10px;
+}
+
+footer p {
+  font-size: 0.5rem;
+  color: #ccc;
+}
+
+/* MODAL */
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 375px) {
+  header {
+    padding: 10px 20px 10px 16px;
+  }
+
+  .RPS-logo {
+    width: 70px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 425px) {
+  .RPS-logo {
+    width: 75px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  header {
+    max-width: 1440px;
+    padding: 10px 32px 10px 26px;
+  }
+
+  .RPS-logo {
+    width: 140px;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  /* two-column layout: */
+  #main-outer-div {
+    width: 100%;
+    max-width: 1440px;
+    margin-top: 40px;
+    padding: 0px 32px 0px 26px;
+    display: grid;
+    grid-template-columns: 15% 1fr; /* left column, right column */
+    grid-template-rows: auto auto; /* game on top, score below */
+    align-items: stretch;
+    column-gap: 10px;
+    row-gap: 20px;
+  }
+
+  /* buttons: full left column */
+  #player-buttons {
+    grid-column: 1;
+    grid-row: 1;
+    align-items: center;
+    gap: 20px;
+    margin: 10px auto;
+  }
+
+  .buttons-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* game area: top-right cell */
+  #game-area,
+  #score-area {
+    grid-column: 2;
+    width: 100%; /* fill the right column */
+  }
+
+  #game-area {
+    height: 100%;
+    grid-row: 1;
+  }
+
+  /* score area: bottom-right cell */
+  #score-area {
+    grid-row: 2;
+  }
+
+  .btn-choices {
+    width: 70px;
+    height: 70px;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  footer {
+    text-align: right;
+    padding: 10px;
+    padding-right: 26px;
+  }
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 10px 50px;
+    justify-content: flex-start;
+    gap: 75px;
+  }
+
+  .RPS-logo {
+    width: 170px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+  .go p {
+    font-size: 1.5rem;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+  }
+
+  #player-buttons {
+    grid-column: 1;
+    grid-row: 1;
+    align-items: center;
+    margin: 10px auto;
+  }
+
+  .select-label {
+    flex-basis: auto;
+  }
+
+  .btn-choices {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (min-width: 1440px) {
+  header {
+    max-width: 1440px;
+    margin: 40px auto;
+    gap: 140px;
+    padding: 10px 100px 10px 0;
+  }
+
+  .RPS-logo {
+    width: 190px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+  .go p {
+    font-size: 1.5rem;
+  }
+
+  .buttons-row {
+    gap: 30px;
+  }
+
+  footer p {
+    font-size: 0.65rem;
+  }
+}
