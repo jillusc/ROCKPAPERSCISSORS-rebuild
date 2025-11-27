@@ -6,6 +6,14 @@
 4: begin the game with whichever choice was made (via button click)
 */
 document.addEventListener("DOMContentLoaded", function () {
+    /* THEME PICKER */
+    const themeButtons = document.querySelectorAll(".theme-dot");
+    themeButtons.forEach((btn) => {
+        const element = btn;
+        element.addEventListener("click", () => {
+            document.body.setAttribute("data-theme", element.dataset.theme);
+        });
+    });
     const buttons = document.getElementsByClassName("btn-choices"); // 2
     for (let button of buttons) {
         button.addEventListener("click", (event) => {

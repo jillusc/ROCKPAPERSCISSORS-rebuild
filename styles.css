@@ -1,5 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Sigmar&display=swap");
 
+/* default - classic theme */
+:root {
+  --pagebg: #ccc;
+  --primary: #7bf9d7;
+  --secondary: #410387;
+  --accent: #fff;
+}
+
+/* neon theme */
+body[data-theme="neon"] {
+  --pagebg: #11111a;
+  --primary: #ff00d4;
+  --secondary: #39ff14;
+  --accent: #6f2cff;
+}
+
+/* monochrome theme */
+body[data-theme="monochrome"] {
+  --pagebg: #fff;
+  --primary: #ddd;
+  --secondary: #000;
+  --accent: #fff;
+}
+
+/* retro theme */
+body[data-theme="retro"] {
+  --pagebg: #3f6ea6;
+  --primary: #ffd800;
+  --secondary: #e52521;
+  --accent: #fff;
+}
+
 /* RESET — remove browser defaults so layout is predictable */
 * {
   margin: 0;
@@ -19,9 +51,9 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  background: #ccc;
+  background: var(--pagebg);
   font-family: "Sigmar", sans-serif;
-  color: #410387;
+  color: var(--secondary);
   text-align: center;
 }
 
@@ -38,7 +70,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px;
+  padding: 10px 16px 5px;
 }
 
 .RPS-logo {
@@ -51,6 +83,11 @@ h1 {
 
 p {
   font-size: 1rem;
+  color: var(--accent);
+}
+
+span {
+  font-size: 1.5rem;
 }
 
 /* MAIN LAYOUT */
@@ -64,9 +101,36 @@ p {
   margin: 20px auto;
 }
 
+#theme-picker {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 0 16px;
+}
+
+.theme-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.classic-dot {
+  background: #ccc;
+}
+.neon-dot {
+  background: #11111a;
+}
+.monochrome-dot {
+  background: #fff;
+}
+.retro-dot {
+  background: #3f6ea6;
+}
+
 .select-label {
   flex-basis: 100%; /* force onto its own line */
-  color: #fff;
+  color: var(--accent);
 }
 
 /* PLAYER BUTTONS */
@@ -98,12 +162,16 @@ p {
 /* GAME AREA */
 #game-area {
   flex: 1;
-  background: #7bf9d7;
-  border: 2px solid #fff;
+  background: var(--primary);
+  border: 2px solid var(--accent);
   border-radius: 30px;
   display: flex;
   justify-content: center;
   padding: 10px;
+}
+
+#game-area p {
+  color: var(--secondary);
 }
 
 /* make player/divider/computer sit next to each other horizontally */
@@ -138,7 +206,7 @@ p {
 /* VERTICAL DIVIDER */
 .divider {
   width: 2px;
-  background: #fff;
+  background: var(--accent);
 }
 
 /* SCORE AREA */
@@ -146,23 +214,24 @@ p {
   width: 90%;
   display: flex;
   justify-content: space-around;
-  background: #410387;
+  background: var(--secondary);
   font-size: 1rem;
-  color: #fff;
-  border: 2px solid #fff;
+  color: var(--accent);
+  border: 2px solid var(--accent);
   border-radius: 30px;
   padding: 10px;
 }
 
 /* FOOTER */
 footer {
-  background: #410387;
+  background: var(--secondary);
   padding: 10px;
 }
 
-footer p {
+footer p,
+footer span {
   font-size: 0.5rem;
-  color: #ccc;
+  color: var(--pagebg);
 }
 
 /* MODAL */
@@ -176,7 +245,7 @@ footer p {
 }
 
 #modal-box {
-  background: #fff;
+  background: var(--accent);
   padding: 20px;
   border-radius: 20px;
 }
@@ -184,7 +253,7 @@ footer p {
 /* MEDIA QUERIES */
 @media (min-width: 375px) {
   header {
-    padding: 10px 20px 10px 16px;
+    padding: 10px 20px 5px 16px;
   }
 
   .RPS-logo {
@@ -193,6 +262,11 @@ footer p {
 
   h1 {
     font-size: 1.3rem;
+  }
+
+  #theme-picker {
+    gap: 10px;
+    margin: 0 20px;
   }
 }
 
@@ -204,12 +278,17 @@ footer p {
   h1 {
     font-size: 1.5rem;
   }
+
+  .theme-dot {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @media (min-width: 768px) {
   header {
     max-width: 1440px;
-    padding: 10px 32px 10px 26px;
+    padding: 10px 32px 5px 26px;
   }
 
   .RPS-logo {
@@ -218,6 +297,16 @@ footer p {
 
   h1 {
     font-size: 2.75rem;
+  }
+
+  #theme-picker {
+    gap: 15px;
+    margin: 0 32px;
+  }
+
+  .theme-dot {
+    width: 20px;
+    height: 20px;
   }
 
   /* two-column layout: */
@@ -283,7 +372,7 @@ footer p {
 
 @media (min-width: 992px) {
   header {
-    padding: 10px 50px;
+    padding: 10px 50px 0;
     justify-content: flex-start;
     gap: 75px;
   }
@@ -295,6 +384,7 @@ footer p {
   h1 {
     font-size: 3rem;
   }
+
   .go p {
     font-size: 1.5rem;
   }
@@ -323,9 +413,9 @@ footer p {
 @media (min-width: 1440px) {
   header {
     max-width: 1440px;
-    margin: 40px auto;
+    margin: 40px auto 0;
     gap: 140px;
-    padding: 10px 100px 10px 0;
+    padding: 10px 100px 0 0;
   }
 
   .RPS-logo {
