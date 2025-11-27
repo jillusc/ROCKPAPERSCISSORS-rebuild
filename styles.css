@@ -8,12 +8,20 @@
   --accent: #fff;
 }
 
+/* retro theme */
+body[data-theme="retro"] {
+  --pagebg: #3f6ea6;
+  --primary: #ffd800;
+  --secondary: #e52521;
+  --accent: #fff;
+}
+
 /* neon theme */
 body[data-theme="neon"] {
-  --pagebg: #11111a;
+  --pagebg: #6f2cff;
   --primary: #ff00d4;
   --secondary: #39ff14;
-  --accent: #6f2cff;
+  --accent: #fff;
 }
 
 /* monochrome theme */
@@ -21,14 +29,6 @@ body[data-theme="monochrome"] {
   --pagebg: #fff;
   --primary: #ddd;
   --secondary: #000;
-  --accent: #fff;
-}
-
-/* retro theme */
-body[data-theme="retro"] {
-  --pagebg: #3f6ea6;
-  --primary: #ffd800;
-  --secondary: #e52521;
   --accent: #fff;
 }
 
@@ -115,17 +115,17 @@ span {
   cursor: pointer;
 }
 
-.classic-dot {
-  background: #ccc;
+.retro-dot {
+  background: #3f6ea6;
 }
 .neon-dot {
-  background: #11111a;
+  background: #6f2cff;
 }
 .monochrome-dot {
   background: #fff;
 }
-.retro-dot {
-  background: #3f6ea6;
+.classic-dot {
+  background: #ccc;
 }
 
 .select-label {
@@ -149,21 +149,25 @@ span {
 .btn-choices {
   width: 60px;
   height: 60px;
-  background: none;
+  background: var(--primary);
+  border-radius: 50%;
+  border: 3px solid var(--secondary);
+  overflow: hidden;
   cursor: pointer;
+  padding: 4px;
 }
 
 .btn-choices img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 80%; /* shrink without distortion */
+  max-height: 80%; /* shrink without distortion */
+  object-fit: contain; /* keeps the real proportions */
 }
 
 /* GAME AREA */
 #game-area {
   flex: 1;
   background: var(--primary);
-  border: 2px solid var(--accent);
+  border: 3px solid var(--accent);
   border-radius: 30px;
   display: flex;
   justify-content: center;
@@ -194,13 +198,17 @@ span {
 
 /* CHOICE IMAGES */
 .choice-img-container {
+  width: 100%;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .choice-img-container img {
-  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* VERTICAL DIVIDER */
@@ -217,7 +225,7 @@ span {
   background: var(--secondary);
   font-size: 1rem;
   color: var(--accent);
-  border: 2px solid var(--accent);
+  border: 3px solid var(--accent);
   border-radius: 30px;
   padding: 10px;
 }
@@ -354,6 +362,10 @@ footer span {
     grid-row: 2;
   }
 
+  .go {
+    gap: 40px;
+  }
+
   .btn-choices {
     width: 70px;
     height: 70px;
@@ -383,6 +395,10 @@ footer span {
 
   h1 {
     font-size: 3rem;
+  }
+
+  .go {
+    gap: 60px;
   }
 
   .go p {

@@ -57,7 +57,7 @@ function runGame(playerChoice: string) {
 /* Display the player's choice of R, P or S */
 function showPlayerChoiceImage(playerChoice: string) {
   if (!playerChoice || !playerChoiceImg) return; // safety guard
-  playerChoiceImg.src = `assets/images/${playerChoice}.webp`;
+  playerChoiceImg.src = `assets/images/${playerChoice}.png`;
   playerChoiceImg.style.display = "block";
 }
 
@@ -65,7 +65,7 @@ function showPlayerChoiceImage(playerChoice: string) {
 function getComputerChoice(): string {
   const randomIndex = Math.floor(Math.random() * choices.length);
   const computerChoice = choices[randomIndex]!;
-  computerChoiceImg.src = `assets/images/${computerChoice}.webp`;
+  computerChoiceImg.src = `assets/images/${computerChoice}.png`;
   computerChoiceImg.style.display = "block";
   return computerChoice;
 }
@@ -121,8 +121,8 @@ function gameEnd() {
     scoresElement.textContent = "0";
     lossesElement.textContent = "0";
 
-    playerChoiceImg.src = "assets/images/blank.webp";
-    computerChoiceImg.src = "assets/images/blank.webp";
+    playerChoiceImg.src = "assets/images/blank.png";
+    computerChoiceImg.src = "assets/images/blank.png";
 
     overlay.classList.remove("show");
     setTimeout(() => {
