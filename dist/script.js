@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.getElementsByClassName("btn-choices"); // 2
     for (let button of buttons) {
         button.addEventListener("click", (event) => {
-            console.log("BUTTON CLICKED!");
             const target = event.currentTarget; // grab the element and store as target; typed
             const img = target.querySelector("img"); // find the first <img> inside it and store as img
             if (!img)
@@ -121,9 +120,11 @@ function incrementScores(winner) {
 function gameEnd() {
     let winnerText;
     if (playerScore === maxScore) {
+        new Audio("assets/sounds/winner.mp3").play();
         winnerText = "You won! Hurrah!";
     }
     else {
+        new Audio("assets/sounds/loser.mp3").play();
         winnerText = "Sorry!<br>The computer won!";
     }
     const overlay = document.getElementById("modal-overlay");

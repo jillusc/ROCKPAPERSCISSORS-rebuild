@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const buttons = document.getElementsByClassName("btn-choices"); // 2
   for (let button of buttons) {
     button.addEventListener("click", (event) => {
-      console.log("BUTTON CLICKED!");
       const target = event.currentTarget as HTMLElement; // grab the element and store as target; typed
       const img = target.querySelector("img"); // find the first <img> inside it and store as img
       if (!img) return; // safety: only run game when img exists
@@ -114,8 +113,10 @@ function ascertainWinner(playerChoice: string, computerChoice: string) {
 function incrementScores(winner: string) {
   if (winner === "player") playerScore++;
   else if (winner === "computer") computerScore++;
+
   scoresElement.textContent = playerScore.toString();
   lossesElement.textContent = computerScore.toString();
+
   if (playerScore === maxScore || computerScore === maxScore) {
     gameEnd();
   }
@@ -125,8 +126,10 @@ function incrementScores(winner: string) {
 function gameEnd() {
   let winnerText;
   if (playerScore === maxScore) {
+    new Audio("assets/sounds/winner.mp3").play();
     winnerText = "You won! Hurrah!";
   } else {
+    new Audio("assets/sounds/loser.mp3").play();
     winnerText = "Sorry!<br>The computer won!";
   }
 
