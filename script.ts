@@ -41,17 +41,20 @@ const computerChoiceImg = document.getElementById(
 ) as HTMLImageElement;
 const scoresElement = document.getElementById("scores") as HTMLElement;
 const lossesElement = document.getElementById("losses") as HTMLElement;
+const rockSound = new Audio("assets/sounds/rockSound.mp3");
+const paperSound = new Audio("assets/sounds/paperSound.mp3");
+const scissorsSound = new Audio("assets/sounds/scissorsSound.mp3");
 
 /* The main game function - called both when the script is first loaded and after the restart alert */
 // we add null to the type to appease TS:
 function runGame(playerChoice: string) {
   showPlayerChoiceImage(playerChoice);
-  // delay by 300ms:
+  // delay by 500ms:
   setTimeout(() => {
     const computerChoice = getComputerChoice();
     const winner = ascertainWinner(playerChoice, computerChoice);
     incrementScores(winner);
-  }, 300);
+  }, 500);
 }
 
 /* Display the player's choice of R, P or S */
@@ -59,6 +62,17 @@ function showPlayerChoiceImage(playerChoice: string) {
   if (!playerChoice || !playerChoiceImg) return; // safety guard
   playerChoiceImg.src = `assets/images/${playerChoice}.png`;
   playerChoiceImg.style.display = "block";
+
+  if (playerChoice === "rock") {
+    rockSound.currentTime = 0;
+    rockSound.play();
+  } else if (playerChoice === "paper") {
+    paperSound.currentTime = 0;
+    paperSound.play();
+  } else if (playerChoice === "scissors") {
+    scissorsSound.currentTime = 0;
+    scissorsSound.play();
+  }
 }
 
 /* Generate a random choice of R, P or S for the computer */
@@ -67,6 +81,17 @@ function getComputerChoice(): string {
   const computerChoice = choices[randomIndex]!;
   computerChoiceImg.src = `assets/images/${computerChoice}.png`;
   computerChoiceImg.style.display = "block";
+
+  if (computerChoice === "rock") {
+    rockSound.currentTime = 0;
+    rockSound.play();
+  } else if (computerChoice === "paper") {
+    paperSound.currentTime = 0;
+    paperSound.play();
+  } else if (computerChoice === "scissors") {
+    scissorsSound.currentTime = 0;
+    scissorsSound.play();
+  }
   return computerChoice;
 }
 
