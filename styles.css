@@ -245,17 +245,52 @@ footer span {
 /* MODAL */
 #modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   display: none;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+#modal-overlay.show {
+  opacity: 1;
 }
 
 #modal-box {
-  background: var(--accent);
+  background: var(--pagebg);
   padding: 20px;
   border-radius: 20px;
+  width: 220px;
+  max-width: 80%;
+  text-align: center;
+  border: 3px solid var(--secondary);
+  color: var(--secondary);
+}
+
+#modal-message {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: var(--secondary);
+}
+
+#modal-message p {
+  color: var(--secondary);
+}
+
+#modal-restart {
+  background: var(--primary);
+  border: 3px solid var(--accent);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--secondary);
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 /* MEDIA QUERIES */
