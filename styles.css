@@ -155,6 +155,12 @@ span {
   overflow: hidden;
   cursor: pointer;
   padding: 4px;
+  transition: transform 0.15s ease;
+}
+
+.btn-choices:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px var(--secondary);
 }
 
 .btn-choices img {
