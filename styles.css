@@ -32,6 +32,11 @@ body[data-theme="monochrome"] {
   --accent: #fff;
 }
 
+/* change speaker icon only in monochrome theme */
+body[data-theme="monochrome"] #mute-btn {
+  color: #ddd;
+}
+
 /* RESET — remove browser defaults so layout is predictable */
 * {
   margin: 0;
@@ -70,7 +75,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px 5px;
+  padding: 10px;
 }
 
 .RPS-logo {
@@ -78,7 +83,20 @@ header {
 }
 
 h1 {
-  font-size: 1.15rem;
+  font-size: 1rem;
+}
+
+#mute-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--accent);
+  transition: transform 0.15s ease;
+}
+
+#mute-btn:hover {
+  transform: scale(1.15);
 }
 
 p {
@@ -103,14 +121,14 @@ span {
 
 #theme-picker {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 8px;
-  margin: 0 16px;
+  padding-left: 10px;
 }
 
 .theme-dot {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -301,21 +319,17 @@ footer span {
 
 /* MEDIA QUERIES */
 @media (min-width: 375px) {
-  header {
-    padding: 10px 20px 5px 16px;
-  }
-
   .RPS-logo {
     width: 70px;
   }
 
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
 
   #theme-picker {
     gap: 10px;
-    margin: 0 20px;
+    padding-left: 16px;
   }
 }
 
@@ -325,19 +339,23 @@ footer span {
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  #mute-btn {
+    font-size: 16px;
   }
 
   .theme-dot {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 }
 
 @media (min-width: 768px) {
   header {
     max-width: 1440px;
-    padding: 10px 32px 5px 26px;
+    padding: 16px;
   }
 
   .RPS-logo {
@@ -348,9 +366,13 @@ footer span {
     font-size: 2.75rem;
   }
 
+  #mute-btn {
+    font-size: 20px;
+  }
+
   #theme-picker {
-    gap: 15px;
-    margin: 0 32px;
+    gap: 10px;
+    margin: 0 50px;
   }
 
   .theme-dot {
@@ -361,9 +383,9 @@ footer span {
   /* two-column layout: */
   #main-outer-div {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1200px;
     margin-top: 40px;
-    padding: 0px 32px 0px 26px;
+    padding: 0px 40px 0px 20px;
     display: grid;
     grid-template-columns: 15% 1fr; /* left column, right column */
     grid-template-rows: auto auto; /* game on top, score below */
@@ -419,15 +441,13 @@ footer span {
   footer {
     text-align: right;
     padding: 10px;
-    padding-right: 26px;
+    padding-right: 16px;
   }
 }
 
 @media (min-width: 992px) {
   header {
-    padding: 10px 50px 0;
-    justify-content: flex-start;
-    gap: 75px;
+    padding: 20px 50px 20px 40px;
   }
 
   .RPS-logo {
@@ -438,12 +458,24 @@ footer span {
     font-size: 3rem;
   }
 
+  #mute-btn {
+    font-size: 24px;
+  }
+
+  #main-outer-div {
+    padding: 0px 56px 0px 20px;
+  }
+
   .go {
     gap: 60px;
   }
 
   .go p {
     font-size: 1.5rem;
+  }
+
+  footer {
+    padding-right: 56px;
   }
 
   footer p {
@@ -467,12 +499,9 @@ footer span {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
   header {
-    max-width: 1440px;
-    margin: 40px auto 0;
-    gap: 140px;
-    padding: 10px 100px 0 0;
+    padding: 20px 40px;
   }
 
   .RPS-logo {
@@ -481,7 +510,28 @@ footer span {
 
   h1 {
     font-size: 3.5rem;
+    margin-right: 20px;
   }
+
+  #theme-picker {
+    gap: 16px;
+    padding-left: 40px;
+  }
+
+  .theme-dot {
+    width: 24px;
+    height: 24px;
+  }
+
+  #main-outer-div {
+    max-width: 1200px;
+    padding-right: 60px;
+  }
+
+  .choice-img-container {
+    height: 200px;
+  }
+
   .go p {
     font-size: 1.5rem;
   }
@@ -490,7 +540,20 @@ footer span {
     gap: 30px;
   }
 
+  footer {
+    padding-right: 60px;
+  }
+
   footer p {
     font-size: 0.65rem;
   }
+}
+
+/* lock the layout so it doesn't stretch wider than 1200px: */
+body > header,
+body > main,
+#theme-picker {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
