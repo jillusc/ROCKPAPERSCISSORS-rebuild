@@ -147,6 +147,11 @@ function gameEnd() {
   if (playerScore === maxScore) {
     new Audio("assets/sounds/winner.mp3").play();
     winnerText = "You won! Hurrah!";
+    (window as any)["confetti"]({
+      particleCount: 120,
+      spread: 90,
+      origin: { y: 0.6 },
+    });
   } else {
     new Audio("assets/sounds/loser.mp3").play();
     winnerText = "Sorry!<br>The computer won!";
